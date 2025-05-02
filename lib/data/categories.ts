@@ -1,4 +1,4 @@
-import { connectToDatabase } from '@/lib/db'
+import { connectToDatabase } from '@/lib/models/db'
 import CategoryModel from '@/lib/models/category.model'
 import ProductModel from '@/lib/models/product.model'
 interface CategoryType {

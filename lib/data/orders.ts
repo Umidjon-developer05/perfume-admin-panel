@@ -1,4 +1,4 @@
-import { connectToDatabase } from '@/lib/db'
+import { connectToDatabase } from '@/lib/models/db'
 import OrderModel from '@/lib/models/order.model'
 
 interface QueryParams {

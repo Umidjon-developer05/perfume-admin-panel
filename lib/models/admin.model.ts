@@ -3,6 +3,10 @@ import mongoose, { Schema, models } from 'mongoose'
 // Define the Admin schema
 const adminSchema = new Schema(
 	{
+		name: {
+			type: String,
+			required: [true, 'Name is required'],
+		},
 		email: {
 			type: String,
 			required: [true, 'Email is required'],

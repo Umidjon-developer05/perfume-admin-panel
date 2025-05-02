@@ -1,4 +1,4 @@
-import { connectToDatabase } from '@/lib/db'
+import { connectToDatabase } from '@/lib/models/db'
 import UserModel from '@/lib/models/user.model'
 import { UserType } from '@/types'
 

@@ -1,5 +1,5 @@
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { connectToDatabase } from '@/lib/db'
+import { connectToDatabase } from '@/lib/models/db'
 import Admin from '@/lib/models/admin.model'
 import bcrypt from 'bcryptjs'
 import { SessionStrategy } from 'next-auth'

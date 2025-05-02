@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { connectToDatabase } from '@/lib/db'
+import { connectToDatabase } from '@/lib/models/db'
 import Admin from '@/lib/models/admin.model'
 import { verifyToken } from '@/lib/generate-token'
 

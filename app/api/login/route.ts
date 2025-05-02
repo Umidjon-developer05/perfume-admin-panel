@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server'
-import { connectToDatabase } from '@/lib/db'
+import { connectToDatabase } from '@/lib/models/db'
 import Admin from '@/lib/models/admin.model'
 import { generateToken } from '@/lib/generate-token'
 import bcrypt from 'bcryptjs'

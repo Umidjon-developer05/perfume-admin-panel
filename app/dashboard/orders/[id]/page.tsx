@@ -21,6 +21,7 @@ import OrderStatusButtons from '../_components/OrderStatusButtons'
 
 interface OrderItem {
 	product: {
+		_id: string
 		imageUrl: string
 		name: string
 	}
@@ -35,7 +36,7 @@ interface PaymentReceipt {
 }
 
 interface Order {
-	_id: string // Change from string to ObjectId
+	_id: string
 	createdAt: string
 	userName: string
 	telegramUserId: string
@@ -69,11 +70,11 @@ export default async function OrderDetailPage({
 			case 'pending':
 				return <Badge variant='outline'>kutilmoqda</Badge>
 			case 'paid':
-				return <Badge variant='secondary'>to‘langan</Badge>
+				return <Badge variant='secondary'>to&apos;langan</Badge>
 			case 'confirmed':
 				return <Badge variant='default'>tasdiqlandi</Badge>
 			case 'shipped':
-				return <Badge variant='secondary'>jo‘natildi</Badge>
+				return <Badge variant='secondary'>jo&apos;natildi</Badge>
 			case 'delivered':
 				return <Badge variant='default'>yetkazib berildi</Badge>
 			case 'cancelled':
@@ -254,8 +255,8 @@ export default async function OrderDetailPage({
 								</tr>
 							</thead>
 							<tbody>
-								{order.items.map((item, index) => (
-									<tr key={index} className='border-b'>
+								{order.items.map(item => (
+									<tr key={item.product?._id} className='border-b'>
 										<td className='px-4 py-2'>
 											<div className='flex items-center gap-2'>
 												<div className='h-10 w-10 overflow-hidden rounded-md bg-muted'>
