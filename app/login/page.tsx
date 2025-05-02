@@ -2,8 +2,8 @@
 
 import type React from 'react'
 
-import { useState } from 'react'
-import { signIn } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+import { getCsrfToken, signIn } from 'next-auth/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -14,17 +14,29 @@ export default function LoginPage() {
 	const [password, setPassword] = useState('')
 	const [error, setError] = useState<string | null>(null)
 	const [loading, setLoading] = useState(false)
+	const [csrfToken, setCsrfToken] = useState<string | null>(null)
 
+	useEffect(() => {
+		getCsrfToken().then(token => {
+			if (token !== undefined) {
+				setCsrfToken(token)
+			}
+		})
+	}, [])
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		setLoading(true)
 		setError(null)
 
 		try {
+			console.log('Submitting login form...')
+			console.log(csrfToken)
 			const result = await signIn('credentials', {
 				email,
 				password,
 				redirect: false,
+				csrfToken,
+				callbackUrl: '/dashboard',
 			})
 
 			if (result?.error) {

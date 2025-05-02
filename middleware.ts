@@ -35,7 +35,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-	matcher: [
-		'/((?!.*\\..*|_next).*)', // Static filesni o‘tkazib yuboradi
-	],
+	matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 }

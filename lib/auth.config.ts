@@ -14,7 +14,9 @@ export const authOptions = {
 			async authorize(credentials) {
 				await connectToDatabase()
 				const admin = await Admin.findOne({ email: credentials?.email })
-				if (!admin) return null
+				if (!credentials?.email || !credentials?.password) {
+					return null
+				}
 
 				const isValid = await bcrypt.compare(
 					credentials!.password,
