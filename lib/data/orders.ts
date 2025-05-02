@@ -128,10 +128,11 @@ export async function updateOrderStatus(
 	status: string
 ): Promise<Order | null> {
 	try {
+		console.log(id, status)
 		await connectToDatabase()
 		const order = await OrderModel.findByIdAndUpdate(
-			id,
-			{ status },
+			{ _id: id },
+			{ status: status },
 			{ new: true }
 		)
 		return order

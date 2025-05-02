@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getOrderById } from '@/lib/data/orders'
-import { updateOrder, markAsRead } from '@/lib/actions/orders'
+import { markAsRead } from '@/lib/actions/orders'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -17,6 +17,7 @@ import {
 	DollarSign,
 	CreditCard,
 } from 'lucide-react'
+import OrderStatusButtons from '../_components/OrderStatusButtons'
 
 interface OrderItem {
 	product: {
@@ -66,17 +67,17 @@ export default async function OrderDetailPage({
 	const getStatusBadge = (status: string) => {
 		switch (status) {
 			case 'pending':
-				return <Badge variant='outline'>Pending</Badge>
+				return <Badge variant='outline'>kutilmoqda</Badge>
 			case 'paid':
-				return <Badge variant='secondary'>Paid</Badge>
+				return <Badge variant='secondary'>to‘langan</Badge>
 			case 'confirmed':
-				return <Badge variant='default'>Confirmed</Badge>
+				return <Badge variant='default'>tasdiqlandi</Badge>
 			case 'shipped':
-				return <Badge variant='secondary'>Shipped</Badge>
+				return <Badge variant='secondary'>jo‘natildi</Badge>
 			case 'delivered':
-				return <Badge variant='default'>Delivered</Badge>
+				return <Badge variant='default'>yetkazib berildi</Badge>
 			case 'cancelled':
-				return <Badge variant='destructive'>Cancelled</Badge>
+				return <Badge variant='destructive'>bekor qilindi</Badge>
 			default:
 				return <Badge variant='outline'>{status}</Badge>
 		}
@@ -111,7 +112,9 @@ export default async function OrderDetailPage({
 									<Package className='h-6 w-6' />
 								</div>
 								<div>
-									<h2 className='text-xl font-semibold'>Order #{order._id}</h2>
+									<h2 className='text-xl font-semibold'>
+										Order #{order._id.toString()}
+									</h2>
 									<p className='text-sm text-muted-foreground'>
 										{formatDate(order.createdAt)}
 									</p>
@@ -224,23 +227,10 @@ export default async function OrderDetailPage({
 							<div className='pt-4'>
 								<p className='font-medium'>Update Status</p>
 								<div className='mt-2 flex flex-wrap gap-2'>
-									{[
-										'pending',
-										'paid',
-										'confirmed',
-										'shipped',
-										'delivered',
-										'cancelled',
-									].map(status => (
-										<Button
-											key={status}
-											onClick={() => updateOrder(order._id, status)}
-											variant={order.status === status ? 'default' : 'outline'}
-											size='sm'
-										>
-											{status.charAt(0).toUpperCase() + status.slice(1)}
-										</Button>
-									))}
+									<OrderStatusButtons
+										currentStatus={order.status}
+										orderId={order._id.toString()}
+									/>
 								</div>
 							</div>
 						</div>
