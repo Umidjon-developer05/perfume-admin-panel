@@ -60,8 +60,15 @@ export default function ProductsPage() {
 					`/api/products?page=${page}&limit=${limit}&search=${search}&category=${category}`
 				)
 				const data = await response.json()
-				setProducts(data.products)
-				setPagination(data.pagination)
+				// Ensure products and pagination data are valid
+				if (data && data.products) {
+					setProducts(data.products || [])
+					setPagination(
+						data.pagination || { page: 1, limit: 10, total: 0, totalPages: 1 }
+					)
+				} else {
+					console.error('Invalid response data for products:', data)
+				}
 			} catch (error) {
 				console.error('Failed to fetch products:', error)
 			}
@@ -71,12 +78,17 @@ export default function ProductsPage() {
 			try {
 				const response = await fetch('/api/categories/all')
 				const data = await response.json()
-				setCategories(
-					data.map((cat: Cat) => ({
-						label: cat.name,
-						value: cat._id,
-					}))
-				)
+				// Ensure categories are properly populated
+				if (Array.isArray(data)) {
+					setCategories(
+						data.map((cat: Cat) => ({
+							label: cat.name,
+							value: cat._id,
+						}))
+					)
+				} else {
+					console.error('Invalid response data for categories:', data)
+				}
 			} catch (error) {
 				console.error('Failed to fetch categories:', error)
 			}
