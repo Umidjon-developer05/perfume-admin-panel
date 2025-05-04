@@ -1,4 +1,4 @@
-import mongoose, { Schema, models } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 // Define the Product schema
 const productSchema = new Schema(
@@ -30,6 +30,6 @@ const productSchema = new Schema(
 )
 
 // Create or use existing Product model
-const Product = models.Product || mongoose.model('Product', productSchema)
+const ProductModel = mongoose.model('Product', productSchema)
 
-export default Product
+export default ProductModel
