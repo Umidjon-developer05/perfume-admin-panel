@@ -126,7 +126,7 @@ export default function ProductsPage() {
 			header: 'Product',
 			accessorKey: 'product',
 			cell: (product: Product) => (
-				<div className='flex items-center gap-2'>
+				<div className='flex items-center gap-2' key={product._id}>
 					<div className='h-10 w-10 overflow-hidden rounded-md bg-muted'>
 						<Image
 							src={product.imageUrl || '/placeholder.svg'}
@@ -154,7 +154,7 @@ export default function ProductsPage() {
 			header: 'Price',
 			accessorKey: 'price',
 			cell: (product: Product) => (
-				<span className='font-medium'>
+				<span className='font-medium' key={product._id}>
 					{product.price.toLocaleString()} so&apos;m
 				</span>
 			),
@@ -163,7 +163,7 @@ export default function ProductsPage() {
 			header: 'Status',
 			accessorKey: 'status',
 			cell: (product: Product) => (
-				<div className='flex flex-col gap-1'>
+				<div className='flex flex-col gap-1' key={product._id}>
 					{product.inStock ? (
 						<Badge variant='outline' className='bg-green-50'>
 							In Stock
@@ -181,7 +181,7 @@ export default function ProductsPage() {
 			header: 'Actions',
 			accessorKey: 'actions',
 			cell: (product: Product) => (
-				<div className='flex items-center gap-2'>
+				<div className='flex items-center gap-2' key={product._id}>
 					<Badge
 						variant='outline'
 						className='cursor-pointer'
@@ -193,7 +193,7 @@ export default function ProductsPage() {
 			),
 		},
 	]
-
+	console.log(columns)
 	return (
 		<div className='space-y-6'>
 			<div className='flex items-center justify-between'>

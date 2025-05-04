@@ -63,7 +63,7 @@ export function DataTable<T>({
 		e.preventDefault()
 		onSearch(searchValue)
 	}
-
+	console.log(columns)
 	return (
 		<div className='space-y-4'>
 			<div className='flex flex-col gap-4 md:flex-row md:items-center md:justify-between'>
@@ -93,7 +93,7 @@ export function DataTable<T>({
 								<SelectContent>
 									<SelectItem value='all'>All</SelectItem>
 									{filter.options.map(option => (
-										<SelectItem key={option.value} value={option.value}>
+										<SelectItem key={option.label} value={option.value}>
 											{option.label}
 										</SelectItem>
 									))}
