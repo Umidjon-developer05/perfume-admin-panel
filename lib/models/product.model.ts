@@ -19,11 +19,7 @@ const productSchema = new Schema(
 			type: String,
 			required: [true, 'Product image is required'],
 		},
-		category: {
-			type: Schema.Types.ObjectId,
-			ref: 'Category',
-			required: [true, 'Product category is required'],
-		},
+		category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
 		// Add any other fields your product needs
 		inStock: {
 			type: Boolean,

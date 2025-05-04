@@ -62,7 +62,7 @@ export default function ProductsPage() {
 				const data = await response.json()
 				// Ensure products and pagination data are valid
 				if (data && data.products) {
-					setProducts(data.products || [])
+					setProducts(data.products)
 					setPagination(
 						data.pagination || { page: 1, limit: 10, total: 0, totalPages: 1 }
 					)
