@@ -162,7 +162,9 @@ export default function OrdersPage() {
 			accessorKey: 'items',
 			cell: (order: Order) => (
 				<div className='flex flex-col'>
-					<span>{order.items.map(item => `${item?._id}`)}</span>
+					<span className='font-medium wrap-break-word'>
+						{order.items.map(item => `${item?._id}`)}
+					</span>
 					<span>{order.items.length} items</span>
 					<span className='text-sm text-muted-foreground'>
 						{order.items
