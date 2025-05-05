@@ -123,6 +123,11 @@ export default function ProductsPage() {
 
 	const columns = [
 		{
+			header: 'ID',
+			accessorKey: '_id',
+			cell: (product: Product) => <div className='text-sm'>{product._id}</div>,
+		},
+		{
 			header: 'Product',
 			accessorKey: 'product',
 			cell: (product: Product) => (
