@@ -1,4 +1,4 @@
-import { model, models, Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 const categorySchema = new Schema({
 	name: {
@@ -12,6 +12,7 @@ const categorySchema = new Schema({
 		type: String,
 	},
 })
-const Category = models.Category || model('Category', categorySchema)
+const Category =
+	mongoose.models.Category || mongoose.model('Category', categorySchema)
 
 export default Category

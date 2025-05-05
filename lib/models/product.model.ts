@@ -1,6 +1,5 @@
 import mongoose, { Schema, model, models } from 'mongoose'
 
-// Define the Product schema
 const productSchema = new Schema(
 	{
 		name: {
@@ -40,7 +39,6 @@ const productSchema = new Schema(
 	{ timestamps: true }
 )
 
-// ✅ This line prevents the OverwriteModelError
 const ProductModel = models.Product || model('Product', productSchema)
 
 export default ProductModel
