@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { DataTable } from '@/components/ui/data-table'
 import { Badge } from '@/components/ui/badge'
@@ -162,9 +162,15 @@ export default function OrdersPage() {
 			accessorKey: 'items',
 			cell: (order: Order) => (
 				<div className='flex flex-col'>
-					<span className='font-medium wrap-break-word'>
-						{order.items.map(item => `${item?._id}`)}
+					<span className='font-medium break-words'>
+						{order.items.map((item, index) => (
+							<React.Fragment key={index}>
+								{item?._id}
+								<br />
+							</React.Fragment>
+						))}
 					</span>
+
 					<span>{order.items.length} items</span>
 					<span className='text-sm text-muted-foreground'>
 						{order.items
