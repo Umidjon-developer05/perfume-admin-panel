@@ -12,10 +12,10 @@ export async function GET(request: NextRequest) {
 		const result = await getProducts(page, limit, category, search)
 
 		return NextResponse.json(result)
-	} catch (error) {
+	} catch (error: any) {
 		console.error('Error fetching products:', error)
 		return NextResponse.json(
-			{ error: 'Failed to fetch products' },
+			{ error: error?.message || 'Failed to fetch products' },
 			{ status: 500 }
 		)
 	}

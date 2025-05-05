@@ -22,7 +22,6 @@ export async function getProducts(
 				$or: [
 					{ name: { $regex: search, $options: 'i' } },
 					{ description: { $regex: search, $options: 'i' } },
-					{ brand: { $regex: search, $options: 'i' } },
 				],
 			}
 		}
