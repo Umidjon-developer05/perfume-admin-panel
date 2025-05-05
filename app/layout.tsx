@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/providers/theme-provider'
+import NextTopLoader from 'nextjs-toploader'
 
 import './globals.css'
 
@@ -22,6 +23,7 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
+					 <NextTopLoader  showSpinner={false} />
 					{children}
 				</ThemeProvider>
 			</body>
