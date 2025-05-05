@@ -14,6 +14,7 @@ interface OrderItem {
 	}
 	quantity: number
 	price: number
+	_id: string
 }
 
 interface Order {
@@ -123,6 +124,11 @@ export default function OrdersPage() {
 
 	const columns = [
 		{
+			header: 'ID',
+			accessorKey: '_id',
+			cell: (order: Order) => <div className='font-medium'>#{order._id}</div>,
+		},
+		{
 			header: 'Order',
 			accessorKey: 'order',
 			cell: (order: Order) => (
@@ -156,6 +162,7 @@ export default function OrdersPage() {
 			accessorKey: 'items',
 			cell: (order: Order) => (
 				<div className='flex flex-col'>
+					<span>{order.items.map(item => `${item?._id}`)}</span>
 					<span>{order.items.length} items</span>
 					<span className='text-sm text-muted-foreground'>
 						{order.items
