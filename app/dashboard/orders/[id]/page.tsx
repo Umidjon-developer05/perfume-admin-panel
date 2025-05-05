@@ -231,6 +231,7 @@ export default async function OrderDetailPage({
 									<OrderStatusButtons
 										currentStatus={order.status}
 										orderId={order._id.toString()}
+										telegramUserId={order.telegramUserId}
 									/>
 								</div>
 							</div>

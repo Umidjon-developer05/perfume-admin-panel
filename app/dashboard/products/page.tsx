@@ -165,7 +165,7 @@ export default function ProductsPage() {
 			cell: (product: Product) => (
 				<div className='flex flex-col gap-1' key={product._id}>
 					{product.inStock ? (
-						<Badge variant='outline' className='bg-green-50'>
+						<Badge variant='outline' className='bg-green-50 text-black'>
 							In Stock
 						</Badge>
 					) : (
