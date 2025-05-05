@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
 		const search = searchParams.get('search') || ''
 
 		const result = await getProducts(page, limit, category, search)
-		
+
 		return NextResponse.json(result)
 	} catch (error: any) {
 		console.error('Error fetching products:', error)

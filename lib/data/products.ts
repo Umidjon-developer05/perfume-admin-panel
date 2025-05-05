@@ -1,5 +1,6 @@
 import { connectToDatabase } from '@/lib/models/db'
 import ProductModel from '@/lib/models/product.model'
+import '@/lib/models/category.model' // ⬅️ Обязательно импортировать модель Category
 
 export async function getProducts(
 	page = 1,
