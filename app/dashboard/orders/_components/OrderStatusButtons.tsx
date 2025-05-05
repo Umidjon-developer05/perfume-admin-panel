@@ -53,7 +53,7 @@ export default function OrderStatusButtons({
 		}
 
 		const res = await fetch(
-			`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,
+			`https://api.telegram.org/bot7796565572:AAGhhOlKhiftxsmKAP1fHtqWRqJnvKNRCx4/sendMessage`,
 			{
 				method: 'POST',
 				headers: {

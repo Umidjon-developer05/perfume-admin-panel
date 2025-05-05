@@ -11,7 +11,7 @@ const publicPaths = ['/', '/login'] // ochiq sahifalar ro'yxati
 export function middleware(req: NextRequest) {
 	//__Secure-next-auth.session-token
 	const ip = getClientIp(req)
-	const token = req.cookies.get('__Secure-next-auth.session-token')?.value
+	const token = req.cookies.get('next-auth.session-token')?.value
 	const { pathname } = req.nextUrl
 
 	// Token yo'q va yopiq sahifaga kirishga urinsa => login sahifasiga redirect
