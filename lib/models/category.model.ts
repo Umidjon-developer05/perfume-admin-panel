@@ -1,12 +1,9 @@
-import mongoose from 'mongoose'
-import { Schema } from 'mongoose'
+import { model, models, Schema } from 'mongoose'
 
-const CategorySchema = new Schema({
+const categorySchema = new Schema({
 	name: {
 		type: String,
 		required: true,
-		trim: true,
-		unique: true,
 	},
 	description: {
 		type: String,
@@ -15,6 +12,6 @@ const CategorySchema = new Schema({
 		type: String,
 	},
 })
-const Category = mongoose.model('Category', CategorySchema)
+const Category = models.Category || model('Category', categorySchema)
 
 export default Category

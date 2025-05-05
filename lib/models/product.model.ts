@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, { Schema, model, models } from 'mongoose'
 
 // Define the Product schema
 const productSchema = new Schema(
@@ -20,7 +20,6 @@ const productSchema = new Schema(
 			required: [true, 'Product image is required'],
 		},
 		category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
-		// Add any other fields your product needs
 		inStock: {
 			type: Boolean,
 			default: true,
@@ -29,7 +28,7 @@ const productSchema = new Schema(
 	{ timestamps: true }
 )
 
-// Create or use existing Product model
-const ProductModel = mongoose.model('Product', productSchema)
+// ✅ This line prevents the OverwriteModelError
+const ProductModel = models.Product || model('Product', productSchema)
 
 export default ProductModel

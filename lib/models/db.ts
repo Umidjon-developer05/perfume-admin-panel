@@ -11,28 +11,10 @@ let cached = (global as any).mongoose
 if (!cached) {
 	cached = (global as any).mongoose = { conn: null, promise: null }
 }
-
+let isConnected = false
 export async function connectToDatabase() {
-	if (cached.conn) {
-		return cached.conn
-	}
+	if (isConnected) return
 
-	if (!cached.promise) {
-		const opts = {
-			bufferCommands: false,
-		}
-
-		cached.promise = mongoose.connect(MONGODB_URI!, opts).then(mongoose => {
-			return mongoose
-		})
-	}
-
-	try {
-		cached.conn = await cached.promise
-	} catch (e) {
-		cached.promise = null
-		throw e
-	}
-
-	return cached.conn
+	await mongoose.connect(process.env.MONGODB_URI!)
+	isConnected = true
 }
