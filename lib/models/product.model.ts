@@ -19,6 +19,18 @@ const productSchema = new Schema(
 			type: String,
 			required: [true, 'Product image is required'],
 		},
+		brand: {
+			type: String,
+			required: [true, 'Product brand is required'],
+		},
+		volume: {
+			type: String,
+			required: [true, 'Product volume is required'],
+		},
+		featured: {
+			type: Boolean,
+			default: false,
+		},
 		category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' },
 		inStock: {
 			type: Boolean,

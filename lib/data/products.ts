@@ -81,6 +81,7 @@ export async function createProduct(productData: any) {
 export async function updateProduct(id: string, productData: any) {
 	try {
 		await connectToDatabase()
+		console.log(id, productData)
 		const product = await ProductModel.findByIdAndUpdate(id, productData, {
 			new: true,
 		})
