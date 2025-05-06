@@ -15,6 +15,7 @@ import {
 	Menu,
 	X,
 	Bell,
+	BadgeDollarSign,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -57,6 +58,11 @@ export function DashboardShell({
 		},
 		{ name: 'Products', href: '/dashboard/products', icon: ShoppingBag },
 		{ name: 'Categories', href: '/dashboard/categories', icon: Tag },
+		{
+			name: 'PaymentOut',
+			href: '/dashboard/payment-out',
+			icon: BadgeDollarSign,
+		},
 	]
 
 	const NavLinks = () => (

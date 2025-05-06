@@ -1,13 +1,13 @@
-import type React from "react"
-import { getOrderStats } from "@/lib/data/orders"
-import { DashboardShell } from "@/components/ui/dashboard-shell"
+import type React from 'react'
+import { getOrderStats } from '@/lib/data/orders'
+import { DashboardShell } from '@/components/ui/dashboard-shell'
 
 export default async function DashboardLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode
 }) {
-  const { unreadOrders } = await getOrderStats()
+	const { unreadOrders } = await getOrderStats()
 
-  return <DashboardShell unreadOrders={unreadOrders}>{children}</DashboardShell>
+	return <DashboardShell unreadOrders={unreadOrders}>{children}</DashboardShell>
 }

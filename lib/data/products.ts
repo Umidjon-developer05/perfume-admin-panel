@@ -1,6 +1,5 @@
 import { connectToDatabase } from '@/lib/models/db'
 import ProductModel from '@/lib/models/product.model'
-import '@/lib/models/category.model' // ⬅️ Обязательно импортировать модель Category
 
 export async function getProducts(
 	page = 1,
@@ -30,12 +29,12 @@ export async function getProducts(
 		const skip = (page - 1) * limit
 
 		const products = await ProductModel.find(query)
-			.populate('category', 'name')
 			.sort({ createdAt: -1 })
 			.skip(skip)
 			.limit(limit)
 			.lean()
-
+			.populate('category', 'name')
+		console.log(products)
 		const total = await ProductModel.countDocuments(query)
 
 		return {
@@ -56,9 +55,7 @@ export async function getProducts(
 export async function getProductById(id: string) {
 	try {
 		await connectToDatabase()
-		const product = await ProductModel.findById(id)
-			.populate('category', 'name')
-			.lean()
+		const product = await ProductModel.findById(id).populate('category').lean()
 
 		return product
 	} catch (error) {
@@ -70,6 +67,7 @@ export async function getProductById(id: string) {
 export async function createProduct(productData: any) {
 	try {
 		await connectToDatabase()
+		console.log(productData)
 		const product = new ProductModel(productData)
 		await product.save()
 		return product

@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server'
 import { getUsers } from '@/lib/data/users'
-
+import Users from '@/lib/models/user.model'
 export async function GET(request: NextRequest) {
 	try {
 		const searchParams = request.nextUrl.searchParams
@@ -18,4 +18,21 @@ export async function GET(request: NextRequest) {
 			{ status: 500 }
 		)
 	}
+}
+
+export async function PUT(request: NextRequest) {
+	const { chatId, bonus } = await request.json()
+	console.log(chatId, bonus)
+	if (!chatId) {
+		return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
+	}
+	const user = await Users.findOneAndUpdate(
+		{
+			telegramId: chatId,
+		},
+		{ $set: { referralBonus: 0 } },
+		{ new: true }
+	)
+
+	return NextResponse.json(user)
 }

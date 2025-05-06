@@ -33,7 +33,7 @@ export default function NewProductPage() {
 		createNewProduct,
 		initialState
 	)
-
+	console.log(state)
 	useEffect(() => {
 		async function fetchCategories() {
 			try {

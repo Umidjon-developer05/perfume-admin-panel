@@ -85,7 +85,7 @@ export default function ProductsPage() {
 		fetchProducts()
 		fetchCategories()
 	}, [searchParams])
-
+	console.log(products)
 	const handlePageChange = (page: number) => {
 		const params = new URLSearchParams(searchParams)
 		params.set('page', page.toString())
@@ -153,7 +153,7 @@ export default function ProductsPage() {
 		{
 			header: 'Category',
 			accessorKey: 'category',
-			cell: (product: Product) => product.category?.name || 'Uncategorized',
+			cell: (product: Product) => product.category?.name,
 		},
 		{
 			header: 'Price',

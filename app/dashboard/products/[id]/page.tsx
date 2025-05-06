@@ -251,7 +251,7 @@ export default function EditProductPage({
 									<Label htmlFor='category'>Category</Label>
 									<Select
 										name='category'
-										defaultValue={product.category._id}
+										defaultValue={product?.category?._id}
 										required
 									>
 										<SelectTrigger>

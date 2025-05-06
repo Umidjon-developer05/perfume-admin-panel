@@ -23,7 +23,7 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					 <NextTopLoader  showSpinner={false} />
+					<NextTopLoader showSpinner={false} />
 					{children}
 				</ThemeProvider>
 			</body>

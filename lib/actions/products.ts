@@ -39,6 +39,7 @@ export async function createNewProduct(
 	prevState: FormState,
 	formData: FormData
 ) {
+	console.log(formData)
 	const validatedFields = ProductSchema.safeParse({
 		name: formData.get('name'),
 		description: formData.get('description'),
@@ -59,7 +60,7 @@ export async function createNewProduct(
 	}
 
 	const productData = validatedFields.data
-
+	console.log(productData)
 	try {
 		await createProduct(productData)
 		revalidatePath('/dashboard/products')
