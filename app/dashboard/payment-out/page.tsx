@@ -23,6 +23,7 @@ interface User {
 export default function PaymentOut() {
 	const router = useRouter()
 	const searchParams = useSearchParams()
+	console.log(searchParams)
 
 	const [users, setUsers] = useState<User[]>([])
 	const [pagination, setPagination] = useState({
@@ -66,14 +67,14 @@ export default function PaymentOut() {
 	const handlePageChange = (page: number) => {
 		const params = new URLSearchParams(searchParams)
 		params.set('page', page.toString())
-		router.push(`/dashboard/users?${params.toString()}`)
+		router.push(`/dashboard/payment-out?${params.toString()}`)
 	}
 
 	const handleLimitChange = (limit: number) => {
 		const params = new URLSearchParams(searchParams)
 		params.set('limit', limit.toString())
 		params.set('page', '1')
-		router.push(`/dashboard/users?${params.toString()}`)
+		router.push(`/dashboard/payment-out?${params.toString()}`)
 	}
 
 	const handleSearch = (search: string) => {
@@ -84,7 +85,7 @@ export default function PaymentOut() {
 			params.delete('search')
 		}
 		params.set('page', '1')
-		router.push(`/dashboard/users?${params.toString()}`)
+		router.push(`/dashboard/payment-out?${params.toString()}`)
 	}
 
 	const columns = [
